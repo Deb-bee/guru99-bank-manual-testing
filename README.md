@@ -155,5 +155,5 @@ Amount Lower Limit and Number of Transactions do not show the expected message f
 
 Deborah Dan-Jumbo
 
-- LinkedIn: [add your link]
-- GitHub: [add your link]
+- LinkedIn:
+- GitHub: 
