@@ -1,0 +1,103 @@
+﻿Bug ID,Title,Module,Steps to Reproduce,Expected Result,Actual Result,Severity,Priority,Environment,Linked Test Case,Status
+BR-001,Verify that the Customer Name accepts a name containing a space between words,New Customer,"1) Enter ""Anita John"" in the Customer Name Field 
+2) Press TAB and move to next Field
+Test Data: Anita John",The system accepts the valid details entered in the fields and displays the appropriate success message or confirmation prompt. ,"An error message ""Numbers are not allowed"" is shown",,Medium,,NC7,Fail
+BR-002,Verify that Customer Name can not start with a space.,New Customer,"1) Enter space as first character in the Customer Name Field
+2) Press TAB and move to next Field
+Test Data:  Anita","An error message ""First character cannot have space"" must be shown","Entered a leading space followed by ""Anita"" in the Customer Name field and pressed TAB. An error message ""Numbers are not allowed"" is shown.",,Medium,,NC10,Fail
+BR-003,Verify that the Name field rejects trailing whitespace after a valid name.,New Customer,"1) Enter a valid name followed by a trailing space in the Customer Name Field
+2) Press TAB and move to next Field
+Test Data:  Anita","The system trims the trailing whitespace and accepts the valid name, or handles it according to the specified validation rules","The system rejects the name when a trailing space is present, An error message ""Numbers are not allowed"" is shown",,Medium,,NC11,Fail
+BR-004,Verify that the Name field does not accept tab/whitespace-only input,New Customer,"1) Enter only spaces in the Customer Name Field
+2) Press TAB and move to next Field
+Test Data: ""    ""","An error message ""Customer name must not be blank"" must be shown","Entered only spaces in the Customer Name field and pressed TAB. An error message ""Numbers are not allowed"" is shown.",,Medium,,NC12,Fail
+BR-005,Verify Address field rejects an address that starts with a space,New Customer,"1) Enter space as first character in the Addreess Field
+2) Press TAB and move to next Field
+Test Data:    15 Peter Odili Road","An error message ""First character cannot have space"" must be shown","After entering a leading space in the Address field and pressing TAB, no error message was displayed. The field accepted the leading space and moved focus to the next field. Expected validation message was not shown",,Medium,,NC16,Fail
+BR-006,Verify that the Address field does not accept special characters.,New Customer,"1) Enter a special character ""@15 Peter Odili Road"" in Address Field
+2) Press TAB and move to next Field
+Test Data: @15 Peter Odili Road","An error message ""Special characters are not allowed"" must shown","After entering a special character in the Address field and pressing TAB, no error message was displayed. The field accepted the special character and moved focus to the next field. Expected validation message was not shown",,Medium,,NC17,Fail
+BR-007,Verify that the Address field does not accept tab/whitespace-only input,New Customer,"1) Enter only spaces in the Address Field
+2) Press TAB and move to next Field
+Test Data: ""   ""","Since Address is a required field, whitespace-only input must not be accepted. On pressing TAB, the field should either reject the spaces (trim them and keep the field empty), or display an error message such as “Address cannot be empty” / “Address is required”, and prevent the value being treated as valid.",Entered only spaces in the Address field and pressed TAB. No error message was displayed. Focus moved to the next field.,,Medium,,NC18,Fail
+BR-008,Verify that the Address field rejects a single character,New Customer,"1) Enter ""A"" in the Address Field 
+2) Press TAB and move to next Field
+Test Data: A","Address field does not accept the single Alphabetic character A as a valid address. On pressing TAB, an error message such as “Please enter a valid address” / “Address is too short” is displayed, and the value is not accepted as valid.","Address field accepted A. No error message was displayed, and focus moved to the next field.",,Medium,,NC19,Fail
+BR-009,Verify that the Address field rejects a single numeric character,New Customer,"1) Enter ""1"" in the Address Field 
+2) Press TAB and move to next Field
+Test Data: ""1""","Address field does not accept the single numeric character 1 as a valid address. On pressing TAB, an error message such as “Please enter a valid address” / “Address is too short” is displayed, and the value is not accepted as valid.","Address field accepted 1. No error message was displayed, and focus moved to the next field.",,Medium,,NC20,Fail
+BR-010,Verify that the first character in City field can not have space.,New Customer,"1) Enter space as first character in the CITY Field
+2) Press TAB and move to next Field
+Test Data:   Lagos","An error message ""First character cannot have space"" must be shown","Entered a leading space followed by ""Lagos"" in the City field and pressed TAB. An error message ""Numbers are not allowed"" is shown.
+",,Medium,,NC24,Fail
+BR-011,Verify that spaces within a city name are handled correctly,New Customer,"1) Enter Port Harcourt in the City field.
+2) Press TAB and move to next Field
+Test Data: Port Harcourt","City field accepts Port Harcourt. No error message is displayed. The internal space is preserved (value remains Port Harcourt, not PortHarcourt), and focus moves to the next field.","City field did not handle the internal space correctly. On entering Port Harcourt, the validation flagged the input and displayed the error message “Numbers are not allowed”.",,Medium,,NC27,Fail
+BR-012,Verify that the State field rejects a state name that starts with a space,New Customer,"1) Enter space as first character in the STATE Field
+2) Press TAB and move to next Field
+Test Data: "" Rivers""","An error message ""First character cannot have space"" must be shown","Entered a leading space followed by ""Rivers"" in the State field and pressed TAB. An error message ""Numbers are not allowed"" is shown.",,Medium,,NC32,Fail
+BR-013,Verify that the State field does not accept whitespace-only input,New Customer,"1) Enter only spaces in the State Field
+2) Press TAB and move to next Field
+Test Data: ""   ""","An error message ""State must not be blank"" must be shown","Entered only spaces in the State field and pressed TAB. An error message ""Numbers are not allowed"" is shown",,Medium,,NC33,Fail
+BR-014,Verify that spaces within a state name are handled correctly,New Customer,"1) Enter Rivers State in the State field.
+2) Press TAB and move to next Field
+Test Data: Rivers State","State field accepts Rivers State. No error message is displayed. The internal space is preserved (value remains Rivers State, not RiversState), and focus moves to the next field.","State field did not handle the internal space correctly. On entering Rivers State, the validation flagged the input and displayed the error message “Numbers are not allowed”.",,Medium,,NC34,Fail
+BR-015,"Verify PIN field handles a valid PIN with a leading space "" 12345""",New Customer,"1) Enter a single space followed by "" 12345"" in the PIN field                              2) Press TAB to move to the next field
+Test Data: "" 12345""",The PIN field rejects the input. A PIN must be exactly 6 digits.,"Entered a leading space followed by ""12345"" and pressed TAB. The field displayed ""12345"" and no error message was shown",,Medium,,NC43,Fail
+BR-016,Verify that the Telephone Number field rejects first character with space,New Customer,"1) Enter "" 805567689"" in Telephone number Field
+2) Press TAB and move to next Field
+Test Data: "" 805567689""",The Telephone Number field does not accept a leading space.,"Entered "" 805567689"" in the Telephone Number field and pressed TAB. The field accepted the leading space with no error message displayed. ",,Medium,,NC47,Fail
+BR-017,Verify that the Email field rejects first character with space,New Customer,"1) Enter an emai with space as first character "" nita@gmail.com"" in the Email Field
+2) Press TAB and move to next Field
+Test Data:  "" nita@gmail.com"" (instead of anita@gmail.com)",The Email field does not accept a leading space.,Entered nita@gmail.com in the Email field and pressed TAB. The field accepted the input with the leading space and displayed no error message. ,,Medium,,NC52,Fail
+BR-018,Verify that the Customer ID field does not accept a blank value,New Account,"1) Leave Customer ID Field blank/empty
+2) Press TAB and move to next Field
+Test Data: Blank",An error message “Customer ID is required” must be shown,No “Customer ID is required” error message was displayed,,Medium,,NA2,Fail
+BR-019,Verify that the Customer ID field does not accept whitespace-only input,New Account,"1) Enter only spaces in the Customer ID Field
+2) Press TAB and move to next Field
+Test Data: ""   """,An error message “Customer ID is required” must be shown,No “Customer ID is required” error message was displayed,,Medium,,NA3,Fail
+BR-020,Verify that the Customer ID field does not accept special characters,New Account,"1) Enter ""123@45"" in the Customer ID Field
+2) Press TAB and move to next Field
+Test Data: 123@45",An error message “Special characters are not allowed” must be shown,No “Special characters are not allowed” error message was displayed,,Medium,,NA6,Fail
+BR-021,Verify that the Customer ID field does not accept alphabetic characters,New Account,"1) Enter ""123AB"" in the Customer ID Field
+2) Press TAB and move to next Field
+Test Data: 123AB",An error message “Characters are not allowed” must be shown,No “ characters are not allowed” error message was displayed,,Medium,,NA7,Fail
+BR-022,Verify that the Customer ID field rejects a leading space,New Account,"1) Enter "" 1234"" in the Customer ID Field
+2) Press TAB and move to next Field
+Test Data: "" 1234""",An error message “First character cannot have space” must be shown,No “First character cannot have space” error message was displayed,,Medium,,NA8,Fail
+BR-023,Verify that the system displays an error when the initial deposit is less than 500,New Account,"1) Enter ""499"" in the Initial Deposit Field
+2) Press TAB and move to next Field
+Test Data: ""499""",An error message such as “Initial deposit must be at least 500” must be shown,No minimum-deposit error message was displayed,,High,,NA11,Fail
+BR-024,Verify that the system rejects an initial deposit just below the minimum allowed amount,New Account,"1) Enter ""499"" in the Initial Deposit Field
+2) Press TAB and move to next Field
+Test Data: ""499""",An error message such as “Initial deposit must be at least 500” must be shown,No minimum-deposit error message was displayed,,High,,NA13,Fail
+BR-025,Verify that the system rejects a zero initial deposit,New Account,"1) Enter ""0"" in the Initial Deposit Field
+2) Press TAB and move to next Field
+Test Data: ""0""","An error message ""Initial deposit must be at least 500"" must be shown",No minimum-deposit error message was displayed,,High,,NA14,Fail
+BR-026,Verify that the Amount Lower Limit field does not accept special characters,Customized Statement,"1) Enter ""10@000"" in the Amount Lower Limit Field
+2) Press TAB and move to next Field
+Test Data: 10@000","An error message ""Special characters are not allowed"" must shown","An error message ""Special characters are not allowed"" wasnt shown",,Medium,,CS7,Fail
+BR-027,Verify that the Amount Lower Limit field does not accept a blank value,Customized Statement,"1) Leave the Amount Lower Limit Field empty/blank
+2) Press TAB and move to next Field
+Test Data: Blank","An error message ""Amount Lower Limit must not be blank"" must shown","An error message ""Amount Lower Limit must not be blank"" didnt show",,Medium,,CS9,Fail
+BR-028,Verify that the Amount Lower Limit field does not accept whitespace-only input,Customized Statement,"1) Enter spaces in the Amount Lower Limit Field
+2) Press TAB and move to next Field
+Test Data: ""   ""","An error message ""Characters are not allowed"" must shown","An error message ""Characters are not allowed"" wasn't shown",,Medium,,CS10,Fail
+BR-029,Verify that the Amount Lower Limit field does not accept alphabetic characters,Customized Statement,"1) Enter ""10A00"" in the Amount Lower Limit Field
+2) Press TAB and move to next Field
+Test Data: 10A00","An error message ""Characters are not allowed"" must shown","An error message ""Characters are not allowed"" wasn't shown",,Medium,,CS12,Fail
+BR-030,Verify that the Number of Transactions field does not accept special characters,Customized Statement,"1) Enter ""1@0"" in the number of transaction Field
+2) Press TAB and move to next Field
+Test Data: 1@0","An error message ""Special characters are not allowed"" must shown","An error message ""Special characters are not allowed"" wasnt shown",,Medium,,CS15,Fail
+BR-031,Verify that the Number of Transactions field does not accept a blank value,Customized Statement,"1) Leave the Number of transaction Field empty/blank
+2) Press TAB and move to next Field
+Test Data: Blank","An error message ""Numbet of transaction must not be blank"" must shown","An error message ""Numbet of transaction must not be blank"" wasn't shown",,Medium,,CS16,Fail
+BR-032,Verify that the Number of Transactions field does not accept whitespace-only input,Customized Statement,"1) Enter spaces in the Number of transaction Field
+2) Press TAB and move to next Field
+Test Data: ""   ""","An error message ""Characters are not allowed"" must shown","An error message ""Characters are not allowed"" wasn't shown",,Medium,,CS17,Fail
+BR-033,Verify that the Number of Transactions field does not accept alphabetic characters,Customized Statement,"1) Enter ""1A0"" in the Number of transaction Field
+2) Press TAB and move to next Field
+Test Data: 1A0","An error message ""Characters are not allowed"" must shown","An error message ""Characters are not allowed"" wasnt shown",,Medium,,CS18,Fail
+BR-034,Verify that the system displays an error when From Date is greater than To Date,Customized Statement,"1) Enter 15/01/2026 in the From Date field.
+2) Enter 10/01/2026 in the To Date field.
+Test Data: From: 15/01/2026 → To: 10/01/2026",The system rejects the range. An error such as “From Date cannot be later than To Date” is displayed.,Entered From Date 15/01/2026 and To Date 10/01/2026 and submitted. No error message was displayed and the system accepted the range,,Medium,,CS21,Fail
